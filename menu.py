@@ -1,11 +1,13 @@
 import pygame, sys
 from pygame.locals import *
-
+import player
 pygame.init()
 width,height = 800,600
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode((width, height))
-
+player = player.player_obj()
+pygame.display.set_caption('Flappy Cat')
+pygame.display.set_icon(player.sprite)
 
 
 class button():
@@ -35,7 +37,7 @@ class button():
 def menu():
     bgc = (0,0,0)
     menu_font = pygame.font.SysFont('arialcursiva', 50)
-    game_name = menu_font.render("Juegardo", False, (255, 255, 255))
+    game_name = menu_font.render("Flappy Cat", False, (255, 255, 255))
     center_title = game_name.get_rect(center = (width/2, height/4))
     
     while True:
