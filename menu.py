@@ -45,8 +45,8 @@ def menu():
         screen.fill(bgc)
         screen.blit(game_name, center_title)
         
-        button_Salir = button("Salir", width/2+50, height/2, 100, 50, (255,0,0))
-        button_Jugar = button("Jugar", width/2-150, height/2, 100, 50, (0,255,0))
+        button_Salir = button("Exit", width/2+50, height/2, 100, 50, (255,0,0))
+        button_Jugar = button("Play", width/2-150, height/2, 100, 50, (0,255,0))
 
         if button_Salir.check():
                 pygame.quit()

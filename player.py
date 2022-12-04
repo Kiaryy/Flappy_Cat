@@ -8,3 +8,4 @@ class player_obj:
     vel.xy = 3,0
     angle = 0
     jumpforce = 4.5
+    
