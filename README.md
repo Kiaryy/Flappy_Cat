@@ -1,2 +1,6 @@
 # Flappy_Cat
- Intento de juego al estilo "Flappy Bird" hecho en Python con la libreria "Pygame"
+ My clumsy atempt at making a "**Flappy Bird**" clone, but *cat themed*
+ 
+# Controls:
+ * SPCACE BAR: Jump
+ * and that's it 
