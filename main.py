@@ -76,6 +76,13 @@ def main():
     g = rd(50, 255)
     b = rd(50, 255)
 
+    
+    if g > 180 or b > 180:
+        rect_colors = (0, 0, 0)
+    else:
+        rect_colors = (255, 255, 255)
+    
+    print(g, b)
     while True:
         
         screen.fill((map(player.pos.y, -5, 615, 0, 255), g, b))
@@ -83,14 +90,17 @@ def main():
         points_text = points_font.render(str(points), False, (0, 0, 0))
         pointst = points_text.get_rect(center = (width/2, height/2))
         screen.blit(points_text, pointst)
-        pygame.draw.rect(screen, (255, 255, 255), (obst1.x, obst1.y1, obst1.width, obst1.height))
-        pygame.draw.rect(screen, (255, 255, 255), (obst1.x, obst1.y2, obst1.width, obst1.height))
         
-        pygame.draw.rect(screen, (255, 255, 255), (obst2.x, obst2.y1, obst2.width, obst2.height))
-        pygame.draw.rect(screen, (255, 255, 255), (obst2.x, obst2.y2, obst2.width, obst2.height))
         
-        pygame.draw.rect(screen, (255, 255, 255), (obst3.x, obst3.y1, obst3.width, obst3.height))
-        pygame.draw.rect(screen, (255, 255, 255), (obst3.x, obst3.y2, obst3.width, obst3.height))
+        
+        pygame.draw.rect(screen, rect_colors, (obst1.x, obst1.y1, obst1.width, obst1.height))
+        pygame.draw.rect(screen, rect_colors, (obst1.x, obst1.y2, obst1.width, obst1.height))
+        
+        pygame.draw.rect(screen, rect_colors, (obst2.x, obst2.y1, obst2.width, obst2.height))
+        pygame.draw.rect(screen, rect_colors, (obst2.x, obst2.y2, obst2.width, obst2.height))
+        
+        pygame.draw.rect(screen, rect_colors, (obst3.x, obst3.y1, obst3.width, obst3.height))
+        pygame.draw.rect(screen, rect_colors, (obst3.x, obst3.y2, obst3.width, obst3.height))
         
         
         
@@ -98,7 +108,10 @@ def main():
         for event in pygame.event.get():           
             if event.type==pygame.KEYDOWN and event.key==K_SPACE:
                 jump = True
-                
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_presses = pygame.mouse.get_pressed()
+                if mouse_presses[0]:
+                    jump = True
             if event.type==QUIT:
                 pygame.quit()
                 sys.exit()
