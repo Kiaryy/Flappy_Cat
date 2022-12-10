@@ -3,4 +3,4 @@
  
 # Controls:
  * SPCACE BAR: Jump
- * and that's it 
+ * Left Mouse Click
