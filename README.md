@@ -3,4 +3,4 @@
  
 # Controls:
  * SPCACE BAR: Jump
- * Left Mouse Click
+ * Left Mouse Click: Also Jump!
