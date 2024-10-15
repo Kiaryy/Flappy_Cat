@@ -8,7 +8,6 @@ from utils import map
 from obstacle import obst
 from random import choice as rdc
 from random import randint as rd
-import os
 
 
 
@@ -19,7 +18,7 @@ die_3 = pygame.mixer.Sound(resource_path('assets\\die_3.wav'))
 die_4 = pygame.mixer.Sound(resource_path('assets\\die_4.wav'))
 audio_pint = pygame.mixer.Sound(resource_path('assets\\point.wav'))
 
-
+hi_score = 0 
 def main():
     pygame.init()
     pygame.display.set_caption('Flappy Cat')
@@ -47,14 +46,20 @@ def main():
     
     
     def game_over():
+        global hi_score
+        if points >= hi_score:
+            hi_score = points
         menu_font = pygame.font.SysFont('arialcursiva', 50)
-        game_name = menu_font.render("Score: " + str(points), False, (255, 255, 255))
-        center_title = game_name.get_rect(center = (width/2, height/4))
+        score_text = menu_font.render("Score: " + str(points), False, (255, 255, 255))
+        hi_score_text = menu_font.render("High Score: " + str(hi_score), False, (255, 255, 255))
+        score_pos = score_text.get_rect(center = (width/2, height/4))
+        hi_score_pos = score_text.get_rect(center = (width/2, height/3))
         s = pygame.Surface((1000,750))
         s.set_alpha(128)
         s.fill((0,0,0))
         screen.blit(s, (0,0))
-        screen.blit(game_name, center_title)
+        screen.blit(score_text, score_pos)
+        screen.blit(hi_score_text, hi_score_pos)
         button_Salir = menu.button("Exit", width/2+50, height/2, 100, 50, (255,0,0))
         button_Jugar = menu.button("Retry", width/2-150, height/2, 100, 50, (0,255,0))
         
@@ -93,14 +98,14 @@ def main():
         
         
         
-        pygame.draw.rect(screen, rect_colors, (obst1.x, obst1.y1, obst1.width, obst1.height))
-        pygame.draw.rect(screen, rect_colors, (obst1.x, obst1.y2, obst1.width, obst1.height))
+        pygame.draw.rect(screen, rect_colors, (obst1.x, obst1.y1, obst1.width, obst1.height), border_radius= 5)
+        pygame.draw.rect(screen, rect_colors, (obst1.x, obst1.y2, obst1.width, obst1.height), border_radius= 5)
         
-        pygame.draw.rect(screen, rect_colors, (obst2.x, obst2.y1, obst2.width, obst2.height))
-        pygame.draw.rect(screen, rect_colors, (obst2.x, obst2.y2, obst2.width, obst2.height))
+        pygame.draw.rect(screen, rect_colors, (obst2.x, obst2.y1, obst2.width, obst2.height), border_radius= 5)
+        pygame.draw.rect(screen, rect_colors, (obst2.x, obst2.y2, obst2.width, obst2.height), border_radius= 5)
         
-        pygame.draw.rect(screen, rect_colors, (obst3.x, obst3.y1, obst3.width, obst3.height))
-        pygame.draw.rect(screen, rect_colors, (obst3.x, obst3.y2, obst3.width, obst3.height))
+        pygame.draw.rect(screen, rect_colors, (obst3.x, obst3.y1, obst3.width, obst3.height), border_radius= 5)
+        pygame.draw.rect(screen, rect_colors, (obst3.x, obst3.y2, obst3.width, obst3.height), border_radius= 5)
         
         
         
